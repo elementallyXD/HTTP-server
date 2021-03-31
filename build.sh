@@ -1,0 +1,2 @@
+#!/bin/bash
+g++ -L/usr/include/boost/lib/ -I/usr/include/boost/ -lboost_system -lboost_thread -lpthread -std=c++11 -o server main.cpp connection_manager.cpp connection.cpp mime_types.cpp reply.cpp request_handler.cpp request_parser.cpp server.cpp
