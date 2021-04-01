@@ -1,5 +1,5 @@
 FROM amd64/ubuntu:trusty
-FROM gcc:latest as build
+# FROM gcc:latest as build
 
 RUN apt-get update \
     && apt-get install -y g++ wget
@@ -18,7 +18,7 @@ RUN echo -e "\n/usr/include/boost/lib/" | tee -a /etc/ld.so.conf
 RUN ldconfig
 
 EXPOSE 8080
-RUN  ./build.sh
+RUN chmod +x ./build.sh
 
 RUN groupadd -g 999 appuser && \
     useradd -r -u 999 -g appuser appuser
