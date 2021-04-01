@@ -18,10 +18,12 @@ RUN echo -e "\n/usr/include/boost/lib/" | tee -a /etc/ld.so.conf
 RUN ldconfig
 
 EXPOSE 8080
+
+WORKDIR /server
 RUN chmod +x ./build.sh
+RUN ./build.sh
 
-# RUN groupadd -g 999 appuser && \
-#     useradd -r -u 999 -g appuser appuser
-# USER appuser
-
-CMD  ["./server", "0.0.0.0", "8080", "."]
+RUN groupadd -g 999 appuser && \
+    useradd -r -u 999 -g appuser appuser
+USER appuser
+# CMD  ["./server", "0.0.0.0", "8080", "."]
