@@ -1,5 +1,5 @@
 FROM amd64/ubuntu:trusty
-# FROM gcc:latest as build
+FROM gcc:latest as build
 
 RUN apt-get update \
     && apt-get install -y g++ wget
@@ -20,8 +20,8 @@ RUN ldconfig
 EXPOSE 8080
 RUN chmod +x ./build.sh
 
-RUN groupadd -g 999 appuser && \
-    useradd -r -u 999 -g appuser appuser
-USER appuser
+# RUN groupadd -g 999 appuser && \
+#     useradd -r -u 999 -g appuser appuser
+# USER appuser
 
 CMD  ["./server", "0.0.0.0", "8080", "."]
